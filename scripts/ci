@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+cd $(dirname $0)/..
+
+DOCKER_IMAGE=${DOCKER_IMAGE:=rancher-os-kernel-build}
+
+source scripts/build-common
+
+run --assets ./scripts/build-common \
+    ./scripts/bootstrap
+run ./scripts/download
+run --assets ./config/kernel-config \
+    ./scripts/build-kernel
+run ./scripts/package
+
+finish
