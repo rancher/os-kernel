@@ -32,4 +32,5 @@ make -j$(nproc) tar-pkg
 
 mkdir -p ${DIST}/kernel
 mv linux*.tar ${DIST}/kernel
+gzip ${DIST}/kernel/linux*.tar
 make headers_install INSTALL_HDR_PATH=${DIST}/kernel/headers
