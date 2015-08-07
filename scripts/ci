@@ -12,6 +12,5 @@ run --assets ./scripts/build-common \
 run ./scripts/download
 run --assets ./config/kernel-config \
     ./scripts/build-kernel
-run ./scripts/package
 
 finish
