@@ -38,4 +38,4 @@ download()
     fi
 }
 
-download 982ecdb9d2482e06d08e6ca02d8bef8787948061 https://github.com/rancherio/linux/archive/Ubuntu-3.19.0-22.22.tar.gz
+download 8fa49a10cd67393b524793a52e7abbdcae1ee4cc https://github.com/rancher/linux/archive/Ubuntu-3.19.0-26.27.tar.gz
