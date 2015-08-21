@@ -38,4 +38,4 @@ download()
     fi
 }
 
-download 8fa49a10cd67393b524793a52e7abbdcae1ee4cc https://github.com/rancher/linux/archive/Ubuntu-3.19.0-26.27.tar.gz
+download 84b9bc53bbb4dd465b97ea54a71a9805e27ae4f2 https://github.com/rancher/linux/archive/Ubuntu-3.19.0-27.29.tar.gz
