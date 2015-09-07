@@ -12,45 +12,6 @@ DOCKER_FILE=${CONFIG}/.dockerfile
 
 mkdir -p ${BUILD} ${DIST}
 
-busybox_install()
-{
-    local conf=$1
-    local bbconf=$2
-    local target=$3
-
-    if [ "$#" = "2" ]; then
-        target=$2
-        bbconf=
-    fi
-
-    apt-get update
-    apt-get install -y build-essential wget libncurses5-dev unzip bc
-
-    cd ${BUILD}
-
-    local buildroot=$(ls -1 ${ARTIFACTS}/buildroot-*.tar.bz2)
-
-    if [ ! -e "${buildroot}" ]; then
-        echo "Failed to find busybox archive, found : ${buildroot}" 1>&2
-        return 1
-    else
-        buildroot=$(basename $buildroot)
-    fi
-
-    rm -rf ${buildroot/.tar.bz2//}
-    tar xvjf ${ARTIFACTS}/${buildroot}
-    cd ${buildroot/.tar.bz2//}
-
-    cp $conf .config
-    if [ -n "$bbconf" ]; then
-        cp $bbconf package/busybox/
-    fi
-    make oldconfig
-    make
-
-    cp output/images/rootfs.tar $target
-}
-
 write_base()
 {
     if [ "${BASE_WRITTEN}" = "true" ]; then
