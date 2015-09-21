@@ -1,10 +1,9 @@
 #!/bin/bash
+set -e
 
 cd $(dirname $0)/..
 
 source scripts/build-common
-
-apt-get install -y build-essential libncurses5-dev bc ccache
 
 export CCACHE_DIR="${HOME}/.kernel-ccache"
 export CC="ccache gcc"
@@ -12,6 +11,7 @@ export PATH="/usr/lib/ccache:$PATH"
 KERNEL=$(basename ${KERNEL_URL})
 DIR=${KERNEL/.tar.*//}
 
+mkdir -p ${BUILD}
 cd ${BUILD}
 
 if [ ! -e ${DIR} ]; then
@@ -31,7 +31,9 @@ cp ${CONFIG}/kernel-config .config
 make oldconfig
 make -j$(nproc) tar-pkg
 
+list_build_files | tar -czf build.tar.gz -T /dev/stdin
+
 mkdir -p ${DIST}/kernel
 mv linux*.tar ${DIST}/kernel
 gzip ${DIST}/kernel/linux*.tar
-make headers_install INSTALL_HDR_PATH=${DIST}/kernel/headers
+mv build.tar.gz ${DIST}/kernel
