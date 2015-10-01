@@ -117,3 +117,35 @@ list_build_files() {
     find ./arch/${SRCARCH} -name module.lds -o -name Kbuild.platforms -o -name Platform
     find . -name Module.symvers -type f
 }
+
+create_firmware_tar() {
+    local list=$1
+    local temp=firmware-temp
+    rm -rf $temp
+    mkdir -p $temp
+    tar xf linux*.tar -C $temp
+
+    if [ ! -e linux-firmware ]; then
+        git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+    fi
+
+    (
+        cd linux-firmware
+        git rev-parse HEAD > .git-commit
+    )
+
+    echo .git-commit > files
+
+    for i in $(<$list); do
+        if [ ! -e $temp/lib/firmware/$i ]; then
+            if [ -e linux-firmware/$i ]; then
+                echo Found $i
+                echo $i >> files
+            else
+                echo Not found $i
+            fi
+        fi
+    done
+
+    tar cf firmware.tar --transform 's,^,lib/firmware/,' -C linux-firmware $(<files)
+}
