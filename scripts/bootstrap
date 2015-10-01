@@ -5,4 +5,4 @@ set -x
 cd $(dirname $0)/..
 
 apt-get update
-apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache
+apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache git
