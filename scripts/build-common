@@ -19,7 +19,7 @@ write_base()
     mkdir -p $(dirname ${DOCKER_FILE})
 
     cat > ${DOCKER_FILE} << EOF
-FROM ${DOCKER_BASE:=ubuntu:14.04.2}
+FROM ${DOCKER_BASE:=ubuntu:14.04.3}
 ENV TERM xterm
 WORKDIR /source
 EOF
