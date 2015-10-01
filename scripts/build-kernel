@@ -10,6 +10,7 @@ export CC="ccache gcc"
 export PATH="/usr/lib/ccache:$PATH"
 KERNEL=$(basename ${KERNEL_URL})
 DIR=${KERNEL/.tar.*//}
+FIRMWARE=$(readlink -f scripts/firmware)
 
 mkdir -p ${BUILD}
 cd ${BUILD}
@@ -31,9 +32,11 @@ cp ${CONFIG}/kernel-config .config
 make oldconfig
 make -j$(nproc) tar-pkg
 
-list_build_files | tar -czf build.tar.gz -T /dev/stdin
+create_firmware_tar $FIRMWARE
 
 mkdir -p ${DIST}/kernel
-mv linux*.tar ${DIST}/kernel
-gzip ${DIST}/kernel/linux*.tar
-mv build.tar.gz ${DIST}/kernel
+
+FILE=$(echo linux*.tar)
+tar --concatenate --file=${FILE} firmware.tar
+cat $FILE | gzip -c > ${DIST}/kernel/${FILE}.gz
+list_build_files | tar -czf ${DIST}/kernel/build.tar.gz -T /dev/stdin
