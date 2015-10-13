@@ -10,6 +10,7 @@ source scripts/build-common
 run --assets ./scripts/build-common \
     ./scripts/bootstrap
 run ./scripts/download
+run --assets ./scripts/firmware
 run --assets ./config/kernel-config \
     ./scripts/build-kernel
 
