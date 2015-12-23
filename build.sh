@@ -3,18 +3,6 @@ set -e
 
 cd $(dirname $0)
 
-export DOCKER_IMAGE=rancher-os-kernel-build
-
-./scripts/ci
-
-rm -rf dist
-
-echo "Build complete. Copying artifacts..."
-
-DIST_CONTAINER=$(docker create ${DOCKER_IMAGE})
-trap "docker rm -v ${DIST_CONTAINER}" EXIT
-
-mkdir -p dist
-docker cp ${DIST_CONTAINER}:/source/dist/kernel dist/
+dapper ./scripts/ci
 
 ls -lh dist/kernel

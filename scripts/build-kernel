@@ -29,6 +29,7 @@ fi
 cd ${DIR}
 cp ${CONFIG}/kernel-config .config
 
+# TODO update config/kernel-config for the latest kernel
 make oldconfig
 make -j$(nproc) tar-pkg
 
