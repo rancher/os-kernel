@@ -15,8 +15,8 @@ FIRMWARE=$(readlink -f scripts/firmware)
 cd ${BUILD}/${DIR}
 
 # TODO update config/kernel-config for the latest kernel
-make oldconfig
-make -j$(nproc) tar-pkg
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- oldconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) tar-pkg
 
 create_firmware_tar $FIRMWARE
 
