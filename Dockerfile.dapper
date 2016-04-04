@@ -1,13 +1,30 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache git vim
+    apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache git vim libssl-dev gcc-aarch64-linux-gnu kmod
+
+ENV TERM=xterm
 
 RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
-ENV DAPPER_SOURCE /source
-ENV DAPPER_OUTPUT ./dist
-ENV SHELL /bin/bash
-ENV HOME ${DAPPER_SOURCE}
+ENV DAPPER_SOURCE=/source
+ENV DAPPER_OUTPUT=./dist
+ENV SHELL=/bin/bash
+ENV HOME=${DAPPER_SOURCE}
 WORKDIR ${DAPPER_SOURCE}
+
+ENV KERNEL_URL_amd64=https://github.com/rancher/linux/archive/Ubuntu-4.2.0-34.39-rancher.tar.gz
+
+## To build for arm64 (aarch64) uncomment and provide your arm64 kernel sources .tar.gz URL
+#ENV KERNEL_URL_arm64=https://github.com/imikushin/estuary-kernel/archive/v4.4.0-ros-1.tar.gz
+
+ARG ARCH
+ENV ARCH=${ARCH:-amd64}
+
+ENV KERNEL_URL=KERNEL_URL_${ARCH}
+
+COPY ./scripts /source/scripts
+RUN /source/scripts/download
+
+CMD ["./scripts/ci"]
