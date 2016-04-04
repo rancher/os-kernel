@@ -3,6 +3,6 @@ set -e
 
 cd $(dirname $0)
 
-dapper ./scripts/ci
+dapper make
 
 ls -lh dist/kernel
