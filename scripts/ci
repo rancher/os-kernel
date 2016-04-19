@@ -5,4 +5,5 @@ cd $(dirname $0)/..
 
 ./scripts/download
 ./scripts/extract
+run-parts -v ./scripts/hooks
 ./scripts/build-kernel
