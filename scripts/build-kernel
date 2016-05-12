@@ -1,28 +1,39 @@
 #!/bin/bash
-set -e
+set -ex
 
 cd $(dirname $0)/..
+. scripts/build-common
 
-source scripts/build-common
+cp ./config/kernel-config.${ARCH} ${SRC_DIR}/.config
 
 export CCACHE_DIR="${HOME}/.kernel-ccache"
 export CC="ccache gcc"
 export PATH="/usr/lib/ccache:$PATH"
 KERNEL=$(basename ${KERNEL_URL})
-DIR=${KERNEL/.tar.*//}
 FIRMWARE=$(readlink -f scripts/firmware)
 
-cd ${BUILD}/${DIR}
+cd ${SRC_DIR}
 
-# TODO update config/kernel-config for the latest kernel
+[ "$ARCH" = "amd64" ] && export ARCH=x86
+if [ "$ARCH" = "arm64" ]; then
+  export CROSS_COMPILE="aarch64-linux-gnu-"
+  sed -i -e 's!# Create the tarball!cp -v -- "${objtree}/arch/arm64/boot/Image" "${tmpdir}/boot/vmlinux-${KERNELRELEASE}"!' ./scripts/package/buildtar
+fi
+
 make oldconfig
 make -j$(nproc) tar-pkg
 
 create_firmware_tar $FIRMWARE
 
+mkdir -p ./tmp/boot
+find . -name '*.dtb' | xargs -I{} cp {} ./tmp/boot/
+tar -cf ./tmp/dtbs.tar -C ./tmp boot
+rm -rf ./tmp/boot
+
 mkdir -p ${DIST}/kernel
 
 FILE=$(echo linux*.tar)
 tar --concatenate --file=${FILE} firmware.tar
+tar --concatenate --file=${FILE} ./tmp/dtbs.tar
 cat $FILE | gzip -c > ${DIST}/kernel/${FILE}.gz
 list_build_files | tar -czf ${DIST}/kernel/build.tar.gz -T /dev/stdin
