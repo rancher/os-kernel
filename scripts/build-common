@@ -64,10 +64,21 @@ move_files() {
             continue
         fi
 
-        dest=$(readlink -f $i | sed 's!/build/!/'$target'/!')
-        mkdir -p $(dirname $dest)
-        mv $i $dest
+        for j in $i ${DEPS[$i]}; do
+            if [ -e $j ]; then
+                dest=$(readlink -f $j | sed 's!/build/!/'$target'/!')
+                mkdir -p $(dirname $dest)
+                mv -f $j $dest
+            fi
+        done
     done
+}
+
+declare -A DEPS
+build_deps() {
+    while read LINE; do
+        DEPS[${LINE%%:*}]="${LINE##*:}"
+    done < <(cat modules.dep)
 }
 
 
@@ -80,8 +91,11 @@ split_tar() {
     mkdir -p tar/{build,main,extra}
     echo Extracting $archive
     tar xf $archive -C tar/build
+    depmod -b tar/build $(basename tar/build/lib/modules/*)
 
     cd tar/build/lib/modules/*/kernel/..
+
+    build_deps
 
     echo Separating modules
     move_files $module_list main
