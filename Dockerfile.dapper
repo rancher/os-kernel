@@ -11,3 +11,6 @@ ENV DAPPER_OUTPUT ./dist
 ENV SHELL /bin/bash
 ENV HOME ${DAPPER_SOURCE}
 WORKDIR ${DAPPER_SOURCE}
+
+ENTRYPOINT ["./scripts/entry"]
+CMD ["ci"]

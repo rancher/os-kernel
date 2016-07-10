@@ -4,9 +4,10 @@ set -e
 cd $(dirname $0)/..
 
 source scripts/build-common
+source scripts/version
 
 KERNEL=$(basename ${KERNEL_URL})
-DIR=${KERNEL/.tar.*//}
+DIR=${VERSION}
 
 mkdir -p ${BUILD}
 cd ${BUILD}

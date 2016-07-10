@@ -1,3 +1,5 @@
+/.dapper
+/bin
 /assets
 /build
 /.buildroot-ccache
@@ -7,3 +9,4 @@
 /.dl
 /Dockerfile
 *.swp
+/.trash-cache
