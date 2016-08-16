@@ -175,7 +175,6 @@ kernel/drivers/clk/clk-si5351.ko
 kernel/drivers/clk/clk-twl6040.ko
 kernel/drivers/clk/clk-wm831x.ko
 kernel/drivers/cpufreq/p4-clockmod.ko
-kernel/drivers/cpufreq/speedstep-lib.ko
 kernel/drivers/crypto/qat/qat_common/intel_qat.ko
 kernel/drivers/crypto/qat/qat_dh895xcc/qat_dh895xcc.ko
 kernel/drivers/crypto/qat/qat_dh895xccvf/qat_dh895xccvf.ko
@@ -2956,9 +2955,6 @@ kernel/drivers/staging/wlan-ng/prism2_usb.ko
 kernel/drivers/staging/xgifb/xgifb.ko
 kernel/drivers/target/sbp/sbp_target.ko
 kernel/drivers/target/tcm_fc/tcm_fc.ko
-kernel/drivers/thermal/intel_pch_thermal.ko
-kernel/drivers/thermal/intel_powerclamp.ko
-kernel/drivers/thermal/intel_soc_dts_thermal.ko
 kernel/drivers/thunderbolt/thunderbolt.ko
 kernel/drivers/tty/cyclades.ko
 kernel/drivers/tty/ipwireless/ipwireless.ko
@@ -3582,6 +3578,7 @@ kernel/net/wireless/lib80211_crypt_tkip.ko
 kernel/net/wireless/lib80211_crypt_wep.ko
 kernel/net/wireless/lib80211.ko
 kernel/net/x25/x25.ko
+kernel/security/keys/encrypted-keys/encrypted-keys.ko
 kernel/sound/ac97_bus.ko
 kernel/sound/core/oss/snd-mixer-oss.ko
 kernel/sound/core/oss/snd-pcm-oss.ko
@@ -3845,4 +3842,5 @@ kernel/sound/usb/snd-usb-audio.ko
 kernel/sound/usb/snd-usbmidi-lib.ko
 kernel/sound/usb/usx2y/snd-usb-us122l.ko
 kernel/sound/usb/usx2y/snd-usb-usx2y.ko
+kernel/ubuntu/hio/hio.ko
 kernel/ubuntu/i915/i915_bpo.ko
