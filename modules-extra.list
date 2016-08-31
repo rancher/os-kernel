@@ -2334,6 +2334,7 @@ kernel/drivers/platform/x86/intel-smartconnect.ko
 kernel/drivers/platform/x86/intel_telemetry_core.ko
 kernel/drivers/platform/x86/intel_telemetry_debugfs.ko
 kernel/drivers/platform/x86/intel_telemetry_pltdrv.ko
+kernel/drivers/platform/x86/intel-vbtn.ko
 kernel/drivers/platform/x86/msi-laptop.ko
 kernel/drivers/platform/x86/msi-wmi.ko
 kernel/drivers/platform/x86/mxm-wmi.ko
