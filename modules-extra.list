@@ -187,6 +187,7 @@ kernel/drivers/dma/ioat/ioatdma.ko
 kernel/drivers/dma/mic_x100_dma.ko
 kernel/drivers/dma/virt-dma.ko
 kernel/drivers/edac/ie31200_edac.ko
+kernel/drivers/edac/skx_edac.ko
 kernel/drivers/extcon/extcon-adc-jack.ko
 kernel/drivers/extcon/extcon-arizona.ko
 kernel/drivers/extcon/extcon-axp288.ko
@@ -281,6 +282,7 @@ kernel/drivers/gpu/drm/vgem/vgem.ko
 kernel/drivers/gpu/drm/via/via.ko
 kernel/drivers/gpu/drm/virtio/virtio-gpu.ko
 kernel/drivers/gpu/drm/vmwgfx/vmwgfx.ko
+kernel/drivers/hid/hid-alps.ko
 kernel/drivers/hid/hid-appleir.ko
 kernel/drivers/hid/hid-aureal.ko
 kernel/drivers/hid/hid-axff.ko
