@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-: ${KERNEL_URL:="https://github.com/rancher/linux/archive/Ubuntu-4.4.0-36.55-rancher1.tar.gz"}
-: ${KERNEL_SHA1:="9a4b7f2e8cc35fc99905a8026c1b2ded4dfd9a89"}
+: ${KERNEL_URL:="https://github.com/rancher/linux/archive/Ubuntu-4.4.0-37.56-rancher1.tar.gz"}
+: ${KERNEL_SHA1:="96840bfd44e4260008274e137bf94bc4834c4aac"}
 : ${ARTIFACTS:=$(pwd)/assets}
 : ${BUILD:=/usr/src}
 : ${CONFIG:=$(pwd)/config}
