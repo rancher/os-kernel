@@ -6,3 +6,4 @@ cd $(dirname $0)/..
 ./scripts/download
 ./scripts/extract
 ./scripts/build-kernel
+./scripts/package-kernel
