@@ -39,7 +39,7 @@ create_firmware_tar() {
                 echo Found $i
                 echo $i >> files
             else
-                echo Not found $i
+                echo WARNING: Firmware listed in $list Not found $i
             fi
         fi
     done
@@ -91,7 +91,7 @@ split_tar() {
     mkdir -p tar/{build,main,extra}
     echo Extracting $archive
     tar xf $archive -C tar/build
-    depmod -b tar/build $(basename tar/build/lib/modules/*)
+    /sbin/depmod -b tar/build $(basename tar/build/lib/modules/*)
 
     cd tar/build/lib/modules/*/kernel/..
 
@@ -102,8 +102,12 @@ split_tar() {
     move_files $module_extra_list extra
 
     if [ $(find kernel -type f | wc -l) -gt 0 ]; then
-        echo Invalid files
+        echo Invalid files in $(pwd)
         find kernel -type f
+	echo
+        echo ERROR: Extra files in $(pwd)
+        echo ERROR: You may need to either remove some modules from your kernel .config, or
+        echo ERROR: add these files to $module_list or $module_extra_list
         exit 1
     fi
 
