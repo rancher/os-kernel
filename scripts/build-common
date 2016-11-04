@@ -18,6 +18,8 @@ create_firmware_tar() {
     local temp=firmware-temp
     rm -rf $temp
     mkdir -p $temp
+    ls -la linux*.tar
+    echo "    tar xf linux*.tar -C $temp"
     tar xf linux*.tar -C $temp
 
     if [ ! -e linux-firmware ]; then
