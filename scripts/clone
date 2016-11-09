@@ -8,11 +8,14 @@ if [ ! -d "linux" ]; then
   git clone https://github.com/rancher/linux
 
   cd linux
-  git remote add linus https://github.com/torvalds/linux
-  git fetch linus
-  git remote add stable	git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
-  git fetch stable
-  git checkout v4.8.5
+  git checkout Ubuntu-4.4.0-42.62-rancher1
+
+# will use soon
+#  git remote add linus https://github.com/torvalds/linux
+#  git fetch linus
+#  git remote add stable	git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+#  git fetch stable
+#  git checkout v4.8.5
 fi
 
 cd ${BUILDDIR}
