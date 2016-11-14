@@ -38,4 +38,5 @@ download()
     fi
 }
 
+# Download Kernel source
 download ${KERNEL_SHA1} ${KERNEL_URL}

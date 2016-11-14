@@ -30,20 +30,30 @@ FIRMWARE=$(readlink -f scripts/firmware)
 MODULE_LIST=$(readlink -f modules.list)
 MODULE_EXTRA_LIST=$(readlink -f modules-extra.list)
 
-cd ${SOURCEDIR}
+echo "looking for /source/dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "looking for /source/dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "looking for /source/dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz"
+if [ -e "/source/dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz" ] \
+   && [ -e "/source/dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz" ] \
+   && [ -e "/source/dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz" ]; then
+    echo "Skipping packaging of kernel, extras and headers - already found in ./dist/kernel/"
+else
+    cd ${SOURCEDIR}
+    KVER=$(make kernelrelease)
 
-create_firmware_tar $FIRMWARE
+    create_firmware_tar $FIRMWARE
 
-mkdir -p ${DIST}/kernel
+    mkdir -p ${DIST}/kernel
 
-FILE=$(echo linux*.tar)
+    FILE="linux-${KVER}-x86.tar"
 
-(
-    split_tar $FILE $MODULE_LIST $MODULE_EXTRA_LIST
-)
+    (
+        split_tar $FILE $MODULE_LIST $MODULE_EXTRA_LIST
+    )
 
-tar --concatenate --file=base.tar firmware.tar
-tar --concatenate --file=extra.tar firmware-extra.tar
-cat base.tar | gzip -c > ${DIST}/kernel/${FILE}.gz
-cat extra.tar | gzip -c > ${DIST}/kernel/extra.tar.gz
-list_build_files | tar -czf ${DIST}/kernel/build.tar.gz -T /dev/stdin
+    tar --concatenate --file=base.tar firmware.tar
+    tar --concatenate --file=extra.tar firmware-extra.tar
+    cat base.tar | gzip -c > ${DIST}/kernel/${FILE}.gz
+    cat extra.tar | gzip -c > ${DIST}/kernel/extra-${FILE}.gz
+    list_build_files | tar -czf ${DIST}/kernel/build-${FILE}.gz -T /dev/stdin
+fi
