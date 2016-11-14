@@ -12,5 +12,9 @@ ENV SHELL /bin/bash
 ENV HOME ${DAPPER_SOURCE}
 WORKDIR ${DAPPER_SOURCE}
 
+ENV KERNEL_TAG=Ubuntu-4.4.0-47.68-rancher1
+ENV KERNEL_URL=https://github.com/rancher/linux/archive/${KERNEL_TAG}.tar.gz
+ENV KERNEL_SHA1=9e93ea7fc7acf9988572c1961a32ddc17e042b50
+
 ENTRYPOINT ["./scripts/entry"]
 CMD ["ci"]
