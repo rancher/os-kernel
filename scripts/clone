@@ -8,7 +8,7 @@ if [ ! -d "linux" ]; then
   git clone https://github.com/rancher/linux
 
   cd linux
-  git checkout Ubuntu-4.4.0-42.62-rancher1
+  git checkout Ubuntu-4.4.0-47.68-rancher1
 
 # will use soon
 #  git remote add linus https://github.com/torvalds/linux
