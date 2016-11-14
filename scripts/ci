@@ -7,3 +7,14 @@ cd $(dirname $0)/..
 ./scripts/extract
 ./scripts/build-kernel
 ./scripts/package-kernel
+./scripts/build-images
+
+echo
+echo "--- ${KERNEL_VERSION} Kernel prepared for RancherOS"
+echo "	./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "	./dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "	./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz"
+echo
+echo "Images ready to push:"
+cat dist/images
+echo

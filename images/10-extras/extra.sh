@@ -1,19 +1,21 @@
 #!/bin/bash
 set -e
+set -x
 
-DIR=$(readlink /lib/modules/$(uname -r)/build)
-STAMP=/lib/modules/$(uname -r)/.extra-done
-VER=$(basename $DIR)
-URL=${KERNEL_EXTRAS_URL:-https://github.com/rancher/os-kernel/releases/download/${VER}/extra.tar.gz}
+echo "Kernel extras for ${KERNEL_VERSION}"
+
+#DIR=/lib/modules/${KERNEL_VERSION}/build
+STAMP=/lib/modules/${KERNEL_VERSION}/.extras-done
 
 if [ -e $STAMP ]; then
-    echo Kernel extras already installed. Delete $STAMP to reinstall
+    echo Kernel extras for ${KERNEL_VERSION} already installed. Delete $STAMP to reinstall
     exit 0
 fi
 
-echo Downloading $URL
-wget -O - $URL | gzip -dc | tar xf - -C /
-depmod -a
+cat /extras.tar.gz | gzip -dc | tar xf - -C /
+if [ "${KERNEL_VERSION}" == "$(uname -r)" ]; then
+    depmod -a
+fi
 touch $STAMP
 
-echo Kernel extras installed
+echo Kernel extras for ${KERNEL_VERSION} installed. Delete $STAMP to reinstall
