@@ -56,4 +56,5 @@ else
     cat base.tar | gzip -c > ${DIST}/kernel/${FILE}.gz
     cat extra.tar | gzip -c > ${DIST}/kernel/extra-${FILE}.gz
     list_build_files | tar -czf ${DIST}/kernel/build-${FILE}.gz -T /dev/stdin
+    cp .config ${DIST}/kernel/config
 fi
