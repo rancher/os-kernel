@@ -18,6 +18,7 @@ if [ ! -e ${DIR} ]; then
     mkdir ${TEMP}/${DIR}
     trap "rm -rf ${TEMP}" exit
 
+    ls -lah ${ARTIFACTS}/${KERNEL}
     tar xf ${ARTIFACTS}/${KERNEL} -C ${TEMP}/${DIR} --strip-components=1
     mv ${TEMP}/${DIR} ${DIR}
 fi
