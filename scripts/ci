@@ -22,10 +22,10 @@ echo
 
 echo "--- Run"
 echo "github-release release --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --pre-release"
-echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/build-linux-${KERNEL_VERSION}-rancher-x86.tar.gz --name build-linux-${KERNEL_VERSION}-rancher-x86.tar.gz"
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz --name build-linux-${KERNEL_VERSION}-x86.tar.gz"
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/config --name config"
-echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/extra-linux-${KERNEL_VERSION}-rancher-x86.tar.gz --name extra-linux-${KERNEL_VERSION}-rancher-x86.tar.gz"
-echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/linux-${KERNEL_VERSION}-rancher-x86.tar.gz --name linux-${KERNEL_VERSION}-rancher-x86.tar.gz"
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz --name extra-linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz --name linux-${KERNEL_VERSION}-x86.tar.gz"
 echo
 
 cat dist/images | sed 's/^/docker push /'
