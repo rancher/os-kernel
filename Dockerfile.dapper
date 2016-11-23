@@ -63,7 +63,7 @@ RUN curl -fL ${DOCKER_URL_amd64} > /usr/bin/docker && \
 
 ########## Kernel version Configuration #############################
 ENV KERNEL_TAG=4.9-rc6
-ENV KERNEL_VERSION=${KERNEL_TAG}-rancher
+ENV KERNEL_VERSION=${KERNEL_TAG}-rancher2
 ENV KERNEL_SHA1=85d47f3d7bdd8f38f26d894afb33abfd58e7c591
 #ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${KERNEL_TAG}.tar.xz
 ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/linux-${KERNEL_TAG}.tar.xz
