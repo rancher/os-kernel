@@ -28,5 +28,4 @@ echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VER
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/linux-${KERNEL_VERSION}-rancher-x86.tar.gz --name linux-${KERNEL_VERSION}-rancher-x86.tar.gz"
 echo
 
-HERE
 cat dist/images | sed 's/^/docker push /'
