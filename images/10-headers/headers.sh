@@ -15,7 +15,7 @@ fi
 rm -rf $DIR
 mkdir -p $DIR
 
-cat /headers.tar.gz | gzip -dc | tar xf - -C $DIR
+cat /build.tar.gz | gzip -dc | tar xf - -C $DIR
 touch $STAMP
 
 echo Kernel headers for ${KERNEL_VERSION} installed. Delete $STAMP to reinstall
