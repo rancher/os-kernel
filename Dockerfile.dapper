@@ -62,9 +62,9 @@ RUN curl -fL ${DOCKER_URL_amd64} > /usr/bin/docker && \
     chmod +x /usr/bin/docker
 
 ########## Kernel version Configuration #############################
-ENV KERNEL_TAG=4.8.10
+ENV KERNEL_TAG=4.8.11
 ENV KERNEL_VERSION=${KERNEL_TAG}-rancher
-ENV KERNEL_SHA1=134bf6a505b0174b66e32138370615705c1700c2
+ENV KERNEL_SHA1=13d103743a95f6717da9c3fe7e8621c86a4fb7f7
 #ENV KERNEL_URL=https://github.com/rancher/linux/archive/v${KERNEL_TAG}.tar.gz
 ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${KERNEL_TAG}.tar.xz
 
