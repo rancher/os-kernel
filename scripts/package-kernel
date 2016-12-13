@@ -53,8 +53,8 @@ else
 
     tar --concatenate --file=base.tar firmware.tar
     tar --concatenate --file=extra.tar firmware-extra.tar
-    cat base.tar | gzip -c > ${DIST}/kernel/${FILE}.gz
-    cat extra.tar | gzip -c > ${DIST}/kernel/extra-${FILE}.gz
-    list_build_files | tar -czf ${DIST}/kernel/build-${FILE}.gz -T /dev/stdin
+    cat base.tar | gzip -c > ${DIST}/kernel/linux-${KERNEL_VERSION}-x86.tar.gz
+    cat extra.tar | gzip -c > ${DIST}/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz
+    list_build_files | tar -czf ${DIST}/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz -T /dev/stdin
     cp .config ${DIST}/kernel/config
 fi
