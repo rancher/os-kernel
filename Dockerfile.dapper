@@ -13,7 +13,7 @@ ARG HOST_ARCH=${DAPPER_HOST_ARCH}
 ARG ARCH=${HOST_ARCH}
 
 RUN apt-get update \
-    && apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache git vim libssl-dev kmod
+    && apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache git vim libssl-dev kmod gnupg2
 
 # Install dapper
 RUN curl -sL https://releases.rancher.com/dapper/latest/dapper-$(uname -s)-$(uname -m | sed 's/arm.*/arm/') > /usr/bin/dapper \
@@ -62,9 +62,12 @@ RUN curl -fL ${DOCKER_URL_amd64} > /usr/bin/docker && \
     chmod +x /usr/bin/docker
 
 ########## Kernel version Configuration #############################
-ENV KERNEL_TAG=4.9
-ENV KERNEL_VERSION=${KERNEL_TAG}-rancher2
-ENV KERNEL_SHA1=fa46da077c077467776cdc45a7b50d327a081ab4
-ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${KERNEL_TAG}.tar.xz
+ENV KERNEL_TAG=4.9.1
+ENV KERNEL_VERSION=${KERNEL_TAG}-rancher
+#ENV KERNEL_SHA1=fa46da077c077467776cdc45a7b50d327a081ab4
+ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/
+ENV KERNEL_TAR=linux-${KERNEL_TAG}.tar.xz
+ENV KERNEL_SIGN=linux-${KERNEL_TAG}.tar.sign
+# for rc testing
 #ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/linux-${KERNEL_TAG}.tar.xz
 
