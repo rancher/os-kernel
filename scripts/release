@@ -1,6 +1,9 @@
 #!/bin/bash
 
-$(dirname $0)/ci 2>&1 | tee $(dirname $0)/../dist/build.log
+cd $(dirname $0)/..
+
+./scripts/ci 2>&1 | tee build.log
+mv build.log dist/
 
 echo
 echo "--- ${KERNEL_VERSION} Kernel prepared for RancherOS"
