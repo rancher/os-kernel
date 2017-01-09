@@ -6,37 +6,19 @@ cd $(dirname $0)/..
 
 source scripts/build-common
 
-check()
-{
-    local hash=$1
-    local file=$2
+mkdir -p ${ARTIFACTS}
+cd ${ARTIFACTS}
 
-    if [ ! -e "$file" ]; then
-        return 1
-    fi
+if [ ! -e "${KERNEL_TAR}" ]; then
+    curl -sL ${KERNEL_URL}${KERNEL_TAR} > ${KERNEL_TAR}
+fi
+curl -sL ${KERNEL_URL}${KERNEL_SIGN} > ${KERNEL_SIGN}
 
-    CURRENT=$(sha1sum $file | awk '{print $1}')
+# grab gregkh's stable signing key 
+gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 6092693E
 
-    [ "$hash" = "$CURRENT" ]
-}
-
-download()
-{
-    mkdir -p ${ARTIFACTS}
-
-    local url=$2
-    local file=${ARTIFACTS}/$(basename $2)
-    local hash=$1
-
-    if ! check $hash $file; then
-        curl -sL $url > $file
-    fi
-
-    if ! check $hash $file; then
-        echo "ERROR: $file does not match checksum $hash, got $CURRENT" 1>&2
-        return 1
-    fi
-}
-
-# Download Kernel source
-download ${KERNEL_SHA1} ${KERNEL_URL}
+if ! xz -cd ${KERNEL_TAR} | gpg2 --verify ${KERNEL_SIGN} - ; then
+    echo "ERROR: ${KERNEL_TAR} signing error" 1>&2
+    return 1
+fi
+echo "${KERNEL_TAR} probably ok"

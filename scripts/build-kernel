@@ -9,7 +9,6 @@ source scripts/version
 export CCACHE_DIR="${HOME}/.kernel-ccache"
 export CC="ccache gcc"
 export PATH="/usr/lib/ccache:$PATH"
-KERNEL=$(basename ${KERNEL_URL})
 DIR=${VERSION}
 FIRMWARE=$(readlink -f scripts/firmware)
 MODULE_LIST=$(readlink -f modules.list)

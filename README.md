@@ -15,9 +15,3 @@ package up the result by running
 
 You may need to adjust the expected module list files.
 
-## Notes
-
-```
-+: ${KERNEL_URL:="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.8.1.tar.xz"}
-+: ${KERNEL_SHA1:="af418cf983819e99fb4bd0c200a10d9568a2ac52"}
-```	
