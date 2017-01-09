@@ -1,3 +1,27 @@
 #!/bin/bash
 
-exec $(dirname $0)/ci
+$(dirname $0)/ci 2>&1 | tee $(dirname $0)/../dist/build.log
+
+echo
+echo "--- ${KERNEL_VERSION} Kernel prepared for RancherOS"
+echo "	./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "	./dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "	./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz"
+echo "	./dist/kernel/config"
+echo "	./dist/build.log"
+echo
+echo "Images ready to push:"
+cat dist/images
+echo
+echo "to publish kernel files and container images, run dist/publish.sh"
+
+echo "#!/bin/sh"> dist/publish.sh
+echo "github-release release --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --pre-release" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz --name build-linux-${KERNEL_VERSION}-x86.tar.gz" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/config --name config" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz --name extra-linux-${KERNEL_VERSION}-x86.tar.gz" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz --name linux-${KERNEL_VERSION}-x86.tar.gz" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/build.log --name build.log" >> dist/publish.sh
+
+cat dist/images | sed 's/^/docker push /' >> dist/publish.sh
+chmod 755 dist/publish.sh
