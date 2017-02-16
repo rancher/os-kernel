@@ -2,7 +2,16 @@
 
 # Build kernel release archives for use in building RancherOS
 
-**Fill me in**
+
+To build the tgz's and the kernel header & extras images, run:
+
+`KERNEL_TAG=4.9.10 make release`
+
+and if you're uploading them, set your GITHUB_TOKEN and login to docker hub, then run
+
+(this requires https://github.com/aktau/github-release to be installed in your path)
+
+`dist/publish.sh`
 
 ## packaging your own kernel builds
 

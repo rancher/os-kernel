@@ -1,4 +1,4 @@
-TARGETS := $(shell ls scripts)
+TARGETS := $(shell ls scripts | grep -vE 'clean')
 
 .dapper:
 	@echo Downloading dapper
@@ -12,6 +12,9 @@ $(TARGETS): .dapper
 
 shell-bind: .dapper
 	./.dapper -m bind -s
+
+clean:
+	@./scripts/clean
 
 .DEFAULT_GOAL := ci
 

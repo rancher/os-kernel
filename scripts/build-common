@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+if [[ "$KERNEL_TAG" == "" ]]; then
+	echo "ERROR: Please set the KERNEL_TAG (the mainline KERNEL version is also the git tag) you're building"
+	echo "       e.g., KERNEL_TAG=4.9.10 make release"
+	exit 1
+fi
+
 : ${ARTIFACTS:=$(pwd)/assets}
 : ${BUILD:=/usr/src}
 : ${CONFIG:=$(pwd)/config}

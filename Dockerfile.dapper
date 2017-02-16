@@ -1,17 +1,6 @@
 FROM ubuntu:16.04
 # FROM arm64=aarch64/ubuntu:16.04 arm=armhf/ubuntu:16.04
 
-ENV DAPPER_ENV ARCH VERSION DEV_BUILD GITHUB_TOKEN
-ENV DAPPER_DOCKER_SOCKET true
-ENV DAPPER_SOURCE /source
-ENV DAPPER_OUTPUT ./dist
-#ENV DAPPER_RUN_ARGS --privileged
-
-######################
-ARG DAPPER_HOST_ARCH=amd64
-ARG HOST_ARCH=${DAPPER_HOST_ARCH}
-ARG ARCH=${HOST_ARCH}
-
 RUN apt-get update \
     && apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache git vim libssl-dev kmod gnupg2
 
@@ -24,6 +13,19 @@ CMD ["ci"]
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
+
+######################
+ENV DAPPER_ENV ARCH VERSION DEV_BUILD GITHUB_TOKEN KERNEL_TAG
+ENV DAPPER_DOCKER_SOCKET true
+ENV DAPPER_SOURCE /source
+ENV DAPPER_OUTPUT ./dist
+#ENV DAPPER_RUN_ARGS --privileged
+
+######################
+ARG KERNEL_TAG=${KERNEL_TAG}
+ARG DAPPER_HOST_ARCH=amd64
+ARG HOST_ARCH=${DAPPER_HOST_ARCH}
+ARG ARCH=${HOST_ARCH}
 
 ENV SHELL /bin/bash
 ENV HOME ${DAPPER_SOURCE}
@@ -52,7 +54,8 @@ ENV DOCKER_URL=DOCKER_URL_${ARCH} \
     DOCKER_URL_arm=${DOCKER_URL_arm} \
     DOCKER_VERSION=${DOCKER_VERSION} \
     HOST_ARCH=${HOST_ARCH} \
-    OS_REPO=${OS_REPO}
+    OS_REPO=${OS_REPO} \
+    KERNEL_TAG=${KERNEL_TAG}
 
 #RUN rm /bin/sh && \
 #    ln -s /bin/bash /bin/sh
@@ -62,7 +65,7 @@ RUN curl -fL ${DOCKER_URL_amd64} > /usr/bin/docker && \
     chmod +x /usr/bin/docker
 
 ########## Kernel version Configuration #############################
-ENV KERNEL_TAG=4.9.8
+#ENV KERNEL_TAG=4.9.9
 ENV KERNEL_VERSION=${KERNEL_TAG}-rancher
 #ENV KERNEL_SHA1=fa46da077c077467776cdc45a7b50d327a081ab4
 ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/
