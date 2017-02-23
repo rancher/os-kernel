@@ -29,3 +29,4 @@ cd ${DIR}
 patch -p1 < ${PATCHES}/*
 popd
 
+tar zcvf ${DIST}/kernel/linux-${KERNEL_VERSION}-src.tgz ${DIR}
