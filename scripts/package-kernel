@@ -42,8 +42,6 @@ else
 
     create_firmware_tar $FIRMWARE
 
-    mkdir -p ${DIST}/kernel
-
     FILE="linux-${KVER}-x86.tar"
 
     (

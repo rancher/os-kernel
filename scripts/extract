@@ -23,3 +23,9 @@ if [ ! -e ${DIR} ]; then
 fi
 
 cp ${CONFIG}/kernel-config ${DIR}/.config
+
+pushd .
+cd ${DIR}
+patch -p1 < ${PATCHES}/*
+popd
+

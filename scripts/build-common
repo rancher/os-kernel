@@ -11,6 +11,10 @@ fi
 : ${BUILD:=/usr/src}
 : ${CONFIG:=$(pwd)/config}
 : ${DIST:=$(pwd)/dist}
+: ${PATCHES:=$(pwd)/patches}
+
+mkdir -p ${DIST}/kernel
+
 
 list_build_files() {
     find . -name Makefile\* -o -name Kconfig\* -o -name \*.pl
