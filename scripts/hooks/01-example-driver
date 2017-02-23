@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# This should be an excutable shell script, which builds your customized driver in to kernel.
+#
+# To minimize maintenance, it is better to be self-sufficent, or with minimum external dependencies.
+# e.g.  gcc mydriver.c
+#
+# A real world example is shown at https://github.com/rancher/os-kernel/commit/93b71d24fb6368d38f562184d6fb5a97926265df
+#
