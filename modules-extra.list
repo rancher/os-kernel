@@ -3987,3 +3987,14 @@ kernel/drivers/power/supply/max8997_charger.ko
 kernel/drivers/power/supply/bq27xxx_battery.ko
 kernel/drivers/power/supply/da9150-charger.ko
 kernel/sound/soc/codecs/snd-soc-rt5663.ko
+kernel/drivers/mmc/core/mmc_block.ko
+kernel/drivers/mmc/core/sdio_uart.ko
+kernel/drivers/crypto/virtio/virtio_crypto.ko
+kernel/drivers/net/ethernet/mellanox/mlxsw/mlxsw_minimal.ko
+kernel/drivers/net/ethernet/mellanox/mlxsw/mlxsw_i2c.ko
+kernel/drivers/net/ethernet/alacritech/slicoss.ko
+kernel/drivers/iio/accel/sca3000.ko
+kernel/drivers/iio/light/isl29018.ko
+kernel/drivers/iio/light/tsl2583.ko
+kernel/drivers/regulator/twl6030-regulator.ko
+
