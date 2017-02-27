@@ -24,9 +24,11 @@ fi
 
 cp ${CONFIG}/kernel-config ${DIR}/.config
 
-pushd .
-cd ${DIR}
-patch -p1 < ${PATCHES}/*
-popd
+if [ -e "${PATCHES}" ]; then
+	pushd .
+	cd ${DIR}
+	patch -p1 < ${PATCHES}/*
+	popd
+fi
 
 tar zcvf ${DIST}/kernel/linux-${KERNEL_VERSION}-src.tgz ${DIR}
