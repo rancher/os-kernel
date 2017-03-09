@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ex
 
 cd $(dirname $0)/..
 
@@ -27,7 +27,7 @@ cp ${CONFIG}/kernel-config ${DIR}/.config
 if [ -e "${PATCHES}" ]; then
 	pushd .
 	cd ${DIR}
-	patch -p1 < ${PATCHES}/*
+	patch -p1 -i ${PATCHES}/*.patch
 	popd
 fi
 

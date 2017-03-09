@@ -1,0 +1,18 @@
+diff --git a/init/main.c b/init/main.c
+index 2858be7..83fa41b 100644
+--- a/init/main.c
++++ b/init/main.c
+@@ -519,9 +519,12 @@ asmlinkage __visible void __init start_kernel(void)
+ 				  static_command_line, __start___param,
+ 				  __stop___param - __start___param,
+ 				  -1, -1, NULL, &unknown_bootoption);
+-	if (!IS_ERR_OR_NULL(after_dashes))
++	if (!IS_ERR_OR_NULL(after_dashes)) {
++		/* elide the non-kernel params by puting a \0 just after the -- */
++		saved_command_line[after_dashes-static_command_line-1] = "\0";
+ 		parse_args("Setting init args", after_dashes, NULL, 0, -1, -1,
+ 			   NULL, set_init_arg);
++	}
+ 
+ 	jump_label_init();
+ 
