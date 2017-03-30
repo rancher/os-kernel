@@ -19,6 +19,6 @@ gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 6092693E
 
 if ! xz -cd ${KERNEL_TAR} | gpg2 --verify ${KERNEL_SIGN} - ; then
     echo "ERROR: ${KERNEL_TAR} signing error" 1>&2
-    return 1
+    exit 1
 fi
 echo "${KERNEL_TAR} probably ok"
