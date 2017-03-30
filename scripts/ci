@@ -3,7 +3,10 @@ set -e
 
 cd $(dirname $0)/..
 
-./scripts/download
+if ! ./scripts/download; then
+	echo "blah"
+	exit 1
+fi
 ./scripts/extract
 run-parts -v ./scripts/hooks
 ./scripts/build-kernel

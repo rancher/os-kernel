@@ -2,7 +2,10 @@
 
 cd $(dirname $0)/..
 
-./scripts/ci 2>&1 | tee build.log
+if ! ./scripts/ci; then
+	echo "build failure see release.log"
+	exit 1
+fi
 mv build.log dist/
 
 echo
