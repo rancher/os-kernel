@@ -6,7 +6,6 @@ if ! ./scripts/ci; then
 	echo "build failure see release.log"
 	exit 1
 fi
-mv build.log dist/
 
 echo
 echo "--- ${KERNEL_VERSION} Kernel prepared for RancherOS"
@@ -15,7 +14,7 @@ echo "	./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz"
 echo "	./dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz"
 echo "	./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz"
 echo "	./dist/kernel/config"
-echo "	./dist/build.log"
+echo "	./release.log"
 echo
 echo "Images ready to push:"
 cat dist/images
@@ -29,7 +28,7 @@ echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VER
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/config --name config" >> dist/publish.sh
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz --name extra-linux-${KERNEL_VERSION}-x86.tar.gz" >> dist/publish.sh
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz --name linux-${KERNEL_VERSION}-x86.tar.gz" >> dist/publish.sh
-echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/build.log --name build.log" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./release.log --name release.log" >> dist/publish.sh
 
 cat dist/images | sed 's/^/docker push /' >> dist/publish.sh
 chmod 755 dist/publish.sh
