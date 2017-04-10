@@ -3529,7 +3529,6 @@ kernel/net/ipv4/geneve_core.ko
 kernel/net/ipv4/netfilter/iptable_security.ko
 kernel/net/ipv4/netfilter/nf_dup_ipv4.ko
 kernel/net/ipv4/netfilter/nft_dup_ipv4.ko
-kernel/net/ipv4/tcp_probe.ko
 kernel/net/ipv6/ila.ko
 kernel/net/ipv6/netfilter/ip6table_security.ko
 kernel/net/ipv6/netfilter/nf_dup_ipv6.ko

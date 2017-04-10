@@ -578,6 +578,7 @@ kernel/net/ipv4/netfilter/nft_dup_ipv4.ko
 kernel/net/ipv4/netfilter/nft_masq_ipv4.ko
 kernel/net/ipv4/netfilter/nft_redir_ipv4.ko
 kernel/net/ipv4/netfilter/nft_reject_ipv4.ko
+kernel/net/ipv4/tcp_bbr.ko
 kernel/net/ipv4/tcp_bic.ko
 kernel/net/ipv4/tcp_cdg.ko
 kernel/net/ipv4/tcp_dctcp.ko
@@ -587,6 +588,8 @@ kernel/net/ipv4/tcp_htcp.ko
 kernel/net/ipv4/tcp_hybla.ko
 kernel/net/ipv4/tcp_illinois.ko
 kernel/net/ipv4/tcp_lp.ko
+kernel/net/ipv4/tcp_nv.ko
+kernel/net/ipv4/tcp_probe.ko
 kernel/net/ipv4/tcp_scalable.ko
 kernel/net/ipv4/tcp_vegas.ko
 kernel/net/ipv4/tcp_veno.ko
