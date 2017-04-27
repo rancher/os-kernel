@@ -3,3 +3,4 @@
 cd $(dirname $0)/..
 
 rm -rf build dist
+docker rmi $(docker images os-kernel --format "{{.Repository}}:{{.Tag}}") | true
