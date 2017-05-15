@@ -1,0 +1,36 @@
+#!/bin/bash
+set -e
+
+cd $(dirname $0)/..
+
+FIRMWARE=$(readlink -f scripts/firmware)
+echo "FIRMWARE test: $FIRMWARE"
+
+    if [ ! -e linux-firmware ]; then
+        git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+    fi
+
+    cd linux-firmware
+
+    for i in $(<$FIRMWARE); do
+            if [ -e $i ]; then
+		glob=$(echo $i | sed 's/^\(.*\)-\([^-]*\)\.\([^.]*\)/\1-*.\3/')
+                #echo Found $i, trying $glob
+		latest=$(ls $glob | xargs -n1 -I{} -- git log -1 --format="%ai {}" {} | sort | tail -n1 | cut -d " " -f4)
+		if [ "$latest" != "$i" ]; then
+			echo "ERROR: Firmware $i in $FIRMWARE is not the latest - update to $latest"
+			STOP="1"
+			echo $latest >> new-firmware
+		else
+			echo $i >> new-firmware
+		fi
+            else
+                echo WARNING: Firmware listed in $FIRMWARE Not found $i
+            fi
+    done
+
+if [ "$STOP" != "" ]; then
+	echo "Update the $FIRMWARE file:"
+	cat new-firmware
+	exit 1
+fi
