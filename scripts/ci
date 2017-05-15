@@ -3,6 +3,8 @@ set -e
 
 cd $(dirname $0)/..
 
+./scripts/test-firmware
+
 if ! ./scripts/download; then
 	echo "blah"
 	exit 1
