@@ -3426,7 +3426,6 @@ kernel/fs/nls/nls_euc-jp.ko
 kernel/fs/nls/nls_iso8859-13.ko
 kernel/fs/nls/nls_iso8859-14.ko
 kernel/fs/nls/nls_iso8859-15.ko
-kernel/fs/nls/nls_iso8859-1.ko
 kernel/fs/nls/nls_iso8859-2.ko
 kernel/fs/nls/nls_iso8859-3.ko
 kernel/fs/nls/nls_iso8859-4.ko
