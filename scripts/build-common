@@ -69,6 +69,7 @@ move_files() {
 
     for i in $(<$module_list); do
         if [ ! -e $i ]; then
+            echo "WARNING move_files into $target, $i does not exist"
             continue
         fi
 
