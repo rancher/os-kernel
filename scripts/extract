@@ -24,11 +24,14 @@ fi
 
 cp ${CONFIG}/kernel-config ${DIR}/.config
 
-if [ -e "${PATCHES}" ]; then
-	pushd .
-	cd ${DIR}
-	patch -p1 -i ${PATCHES}/*.patch
-	popd
-fi
+pushd .
+cd ${DIR}
+echo "are there patches in ${PATCHES}"
+for p in ${PATCHES}/*.patch; do
+	echo "patching $p"
+	patch -p1 -i $p
+done
+popd
+
 
 tar zcvf ${DIST}/kernel/linux-${KERNEL_VERSION}-src.tgz ${DIR}
