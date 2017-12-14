@@ -884,3 +884,4 @@ kernel/net/xfrm/xfrm_algo.ko
 kernel/net/xfrm/xfrm_ipcomp.ko
 kernel/net/xfrm/xfrm_user.ko
 kernel/virt/lib/irqbypass.ko
+kernel/drivers/net/ethernet/amazon/ena/ena.ko
