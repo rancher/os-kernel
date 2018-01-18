@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-export ARCH=${ARCH:-"amd64"}
 BASE=images
 
 source $(dirname $0)/version

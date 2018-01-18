@@ -14,63 +14,33 @@ CMD ["ci"]
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-######################
-ENV DAPPER_ENV ARCH VERSION DEV_BUILD GITHUB_TOKEN KERNEL_TAG
+ARG DAPPER_HOST_ARCH=amd64
+ENV HOST_ARCH=${DAPPER_HOST_ARCH}
+
 ENV DAPPER_DOCKER_SOCKET true
 ENV DAPPER_SOURCE /source
 ENV DAPPER_OUTPUT ./dist
 #ENV DAPPER_RUN_ARGS --privileged
-
-######################
-ARG KERNEL_TAG=${KERNEL_TAG}
-ARG DAPPER_HOST_ARCH=amd64
-ARG HOST_ARCH=${DAPPER_HOST_ARCH}
-ARG ARCH=${HOST_ARCH}
-
 ENV SHELL /bin/bash
 ENV HOME ${DAPPER_SOURCE}
 WORKDIR ${DAPPER_SOURCE}
 
-########## General Configuration #####################
-
 ARG OS_REPO=rancher
-ARG DOCKER_VERSION=1.10.3
-ARG DOCKER_PATCH_VERSION=v${DOCKER_VERSION}-ros1
+ARG KERNEL_TAG
+ARG KERNEL_VERSION=${KERNEL_TAG}-${OS_REPO}
+ARG ARCH=x86
 
-ARG DOCKER_URL_amd64=https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}
-ARG DOCKER_URL_arm=https://github.com/rancher/docker/releases/download/${DOCKER_PATCH_VERSION}/docker-${DOCKER_VERSION}_arm
-ARG DOCKER_URL_arm64=https://github.com/rancher/docker/releases/download/${DOCKER_PATCH_VERSION}/docker-${DOCKER_VERSION}_arm64
-
-######################################################
-
-# Export all ARGS as ENV
-ENV DOCKER_URL=DOCKER_URL_${ARCH} \
+ENV OS_REPO=${OS_REPO} \
     ARCH=${ARCH} \
-    DISTRIB_ID=${DISTRIB_ID} \
-    DOCKER_PATCH_VERSION=${DOCKER_PATCH_VERSION} \
-    DOCKER_URL=${DOCKER_URL} \
-    DOCKER_URL_amd64=${DOCKER_URL_amd64} \
-    DOCKER_URL_arm64=${DOCKER_URL_arm64} \
-    DOCKER_URL_arm=${DOCKER_URL_arm} \
-    DOCKER_VERSION=${DOCKER_VERSION} \
-    HOST_ARCH=${HOST_ARCH} \
-    OS_REPO=${OS_REPO} \
-    KERNEL_TAG=${KERNEL_TAG}
-
-#RUN rm /bin/sh && \
-#    ln -s /bin/bash /bin/sh
+    DOCKER_URL_amd64=https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 \
+    KERNEL_TAG=${KERNEL_TAG} \
+    KERNEL_VERSION=${KERNEL_VERSION} \
+    KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/ \
+    KERNEL_TAR=linux-${KERNEL_TAG}.tar.xz \
+    KERNEL_SIGN=linux-${KERNEL_TAG}.tar.sign
+# for rc testing
+#ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/linux-${KERNEL_TAG}.tar.xz
 
 # Install Docker
 RUN curl -fL ${DOCKER_URL_amd64} > /usr/bin/docker && \
     chmod +x /usr/bin/docker
-
-########## Kernel version Configuration #############################
-#ENV KERNEL_TAG=4.9.9
-ENV KERNEL_VERSION=${KERNEL_TAG}-rancher
-#ENV KERNEL_SHA1=fa46da077c077467776cdc45a7b50d327a081ab4
-ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/
-ENV KERNEL_TAR=linux-${KERNEL_TAG}.tar.xz
-ENV KERNEL_SIGN=linux-${KERNEL_TAG}.tar.sign
-# for rc testing
-#ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/linux-${KERNEL_TAG}.tar.xz
-
