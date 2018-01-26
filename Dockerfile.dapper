@@ -1,8 +1,8 @@
-FROM ubuntu:16.04
-# FROM arm64=aarch64/ubuntu:16.04 arm=armhf/ubuntu:16.04
+FROM niusmallnan/gcc:7.3.0
+# FROM arm64=arm64v8/gcc:7.2
 
 RUN apt-get update \
-    && apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache git vim libssl-dev kmod gnupg2 locales
+    && apt-get install -y ccache vim gnupg2 locales bc kmod
 
 # Install dapper
 RUN curl -sL https://releases.rancher.com/dapper/latest/dapper-$(uname -s)-$(uname -m | sed 's/arm.*/arm/') > /usr/bin/dapper \
