@@ -1,5 +1,5 @@
-FROM niusmallnan/gcc:7.3.0
-# FROM arm64=arm64v8/gcc:7.2
+FROM gcc:7.3.0
+# FROM arm64=arm64v8/gcc:7.3.0
 
 RUN apt-get update \
     && apt-get install -y ccache vim gnupg2 locales bc kmod
