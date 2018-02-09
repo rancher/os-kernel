@@ -14,6 +14,8 @@ echo "	./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz"
 echo "	./dist/kernel/build-linux-${KERNEL_VERSION}-x86.tar.gz"
 echo "	./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz"
 echo "	./dist/kernel/config"
+echo "	./dist/kernel/modules-main.list"
+echo "	./dist/kernel/modules-extra.list"
 echo "	./release.log"
 echo
 echo "Images ready to push:"
@@ -28,6 +30,8 @@ echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VER
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/config --name config" >> dist/publish.sh
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/extra-linux-${KERNEL_VERSION}-x86.tar.gz --name extra-linux-${KERNEL_VERSION}-x86.tar.gz" >> dist/publish.sh
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz --name linux-${KERNEL_VERSION}-x86.tar.gz" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/modules-main.list --name modules-main.list" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./dist/kernel/modules-extra.list --name modules-extra.list" >> dist/publish.sh
 echo "github-release upload  --user rancher --repo os-kernel --tag v${KERNEL_VERSION} --file ./release.log --name release.log" >> dist/publish.sh
 
 cat dist/images | sed 's/^/docker push /' >> dist/publish.sh
