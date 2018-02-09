@@ -78,6 +78,7 @@ move_files() {
                 dest=$(readlink -f $j | sed 's!/build/!/'$target'/!')
                 mkdir -p $(dirname $dest)
                 mv -f $j $dest
+                echo $j >> ${DIST}/kernel/modules-${target}.list
             fi
         done
     done
@@ -113,7 +114,7 @@ split_tar() {
     if [ $(find kernel -type f | wc -l) -gt 0 ]; then
         echo Invalid files in $(pwd)
         find kernel -type f
-	echo
+        echo
         echo ERROR: Extra files in $(pwd)
         echo ERROR: You may need to either remove some modules from your kernel .config, or
         echo ERROR: add these files to $module_list or $module_extra_list
