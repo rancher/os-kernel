@@ -14,8 +14,12 @@ if [ ! -e "${KERNEL_TAR}" ]; then
 fi
 curl -sL ${KERNEL_URL}${KERNEL_SIGN} > ${KERNEL_SIGN}
 
-# grab gregkh's stable signing key 
-gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 6092693E
+# grab gregkh's stable signing key
+GPG_KEY="6092693E"
+gpg2 --keyserver hkp://keys.gnupg.net --recv-keys $GPG_KEY \
+  || gpg2 --keyserver ha.pool.sks-keyservers.net --recv-keys $GPG_KEYS \
+  || gpg2 --keyserver pgp.mit.edu --recv-keys $GPG_KEYS \
+  || gpg2 --keyserver keyserver.pgp.com --recv-keys $GPG_KEYS
 
 if ! xz -cd ${KERNEL_TAR} | gpg2 --verify ${KERNEL_SIGN} - ; then
     echo "ERROR: ${KERNEL_TAR} signing error" 1>&2
