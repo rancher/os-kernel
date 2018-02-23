@@ -1657,8 +1657,6 @@ kernel/lib/crc7.ko
 kernel/drivers/mmc/host/mtk-sd.ko
 kernel/drivers/mmc/host/rtsx_pci_sdmmc.ko
 kernel/drivers/mmc/host/rtsx_usb_sdmmc.ko
-kernel/drivers/mmc/host/sdhci-acpi.ko
-kernel/drivers/mmc/host/sdhci.ko
 kernel/drivers/mmc/host/sdhci-pci.ko
 kernel/drivers/mmc/host/sdhci-pltfm.ko
 kernel/drivers/mmc/host/tifm_sd.ko
@@ -3406,7 +3404,6 @@ kernel/drivers/power/supply/pcf50633-charger.ko
 kernel/drivers/power/supply/gpio-charger.ko
 kernel/drivers/power/supply/max8997_charger.ko
 kernel/drivers/power/supply/da9150-charger.ko
-kernel/drivers/mmc/core/mmc_block.ko
 kernel/drivers/mmc/core/sdio_uart.ko
 kernel/drivers/crypto/virtio/virtio_crypto.ko
 kernel/crypto/crypto_engine.ko
