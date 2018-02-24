@@ -818,3 +818,6 @@ kernel/net/vmw_vsock/vmw_vsock_virtio_transport.ko
 kernel/net/vmw_vsock/vmw_vsock_vmci_transport.ko
 kernel/net/xfrm/xfrm_user.ko
 kernel/drivers/net/ethernet/amazon/ena/ena.ko
+kernel/drivers/mmc/host/sdhci-acpi.ko
+kernel/drivers/mmc/host/sdhci.ko
+kernel/drivers/mmc/core/mmc_block.ko
