@@ -17,7 +17,6 @@ curl -sL ${KERNEL_URL}${KERNEL_SIGN} > ${KERNEL_SIGN}
 # grab gregkh's stable signing key
 GPG_KEY="6092693E"
 gpg2 --keyserver hkp://keys.gnupg.net --recv-keys $GPG_KEY \
-  || gpg2 --keyserver ha.pool.sks-keyservers.net --recv-keys $GPG_KEYS \
   || gpg2 --keyserver pgp.mit.edu --recv-keys $GPG_KEYS \
   || gpg2 --keyserver keyserver.pgp.com --recv-keys $GPG_KEYS
 
