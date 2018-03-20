@@ -330,6 +330,7 @@ kernel/drivers/net/phy/teranetics.ko
 kernel/drivers/net/veth.ko
 kernel/drivers/net/vrf.ko
 kernel/drivers/net/vxlan.ko
+kernel/drivers/net/macsec.ko
 kernel/drivers/net/xen-netback/xen-netback.ko
 kernel/drivers/pci/host/pci-hyperv.ko
 kernel/drivers/pci/hotplug/acpiphp_ibm.ko
