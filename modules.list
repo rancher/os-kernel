@@ -885,3 +885,6 @@ kernel/net/xfrm/xfrm_ipcomp.ko
 kernel/net/xfrm/xfrm_user.ko
 kernel/virt/lib/irqbypass.ko
 kernel/drivers/net/ethernet/amazon/ena/ena.ko
+kernel/drivers/mmc/host/sdhci-acpi.ko
+kernel/drivers/mmc/host/sdhci.ko
+kernel/drivers/mmc/core/mmc_block.ko

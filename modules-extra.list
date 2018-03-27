@@ -1745,8 +1745,6 @@ kernel/drivers/mmc/host/mmc_spi.ko
 kernel/drivers/mmc/host/mtk-sd.ko
 kernel/drivers/mmc/host/rtsx_pci_sdmmc.ko
 kernel/drivers/mmc/host/rtsx_usb_sdmmc.ko
-kernel/drivers/mmc/host/sdhci-acpi.ko
-kernel/drivers/mmc/host/sdhci.ko
 kernel/drivers/mmc/host/sdhci-pci.ko
 kernel/drivers/mmc/host/sdhci-pltfm.ko
 kernel/drivers/mmc/host/sdricoh_cs.ko
@@ -3985,7 +3983,6 @@ kernel/drivers/power/supply/max8997_charger.ko
 kernel/drivers/power/supply/bq27xxx_battery.ko
 kernel/drivers/power/supply/da9150-charger.ko
 kernel/sound/soc/codecs/snd-soc-rt5663.ko
-kernel/drivers/mmc/core/mmc_block.ko
 kernel/drivers/mmc/core/sdio_uart.ko
 kernel/drivers/crypto/virtio/virtio_crypto.ko
 kernel/drivers/net/ethernet/mellanox/mlxsw/mlxsw_minimal.ko
