@@ -154,6 +154,7 @@ kernel/drivers/extcon/extcon-adc-jack.ko
 kernel/drivers/iio/industrialio.ko
 kernel/drivers/extcon/extcon-arizona.ko
 kernel/sound/soc/snd-soc-core.ko
+kernel/sound/core/snd-compress.ko
 kernel/sound/core/snd-pcm-dmaengine.ko
 kernel/sound/ac97_bus.ko
 kernel/sound/core/snd-pcm.ko
@@ -224,7 +225,6 @@ kernel/drivers/gpio/gpio-wm831x.ko
 kernel/drivers/gpio/gpio-wm8350.ko
 kernel/drivers/gpio/gpio-wm8994.ko
 kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko
-kernel/drivers/gpu/drm/amd/lib/chash.ko
 kernel/drivers/gpu/drm/ttm/ttm.ko
 kernel/drivers/gpu/drm/drm_kms_helper.ko
 kernel/drivers/gpu/drm/drm.ko
@@ -382,6 +382,7 @@ kernel/drivers/hwmon/g760a.ko
 kernel/drivers/hwmon/g762.ko
 kernel/drivers/hwmon/gl518sm.ko
 kernel/drivers/hwmon/gl520sm.ko
+kernel/drivers/hwmon/gpio-fan.ko
 kernel/drivers/hwmon/hih6130.ko
 kernel/drivers/hwmon/i5k_amb.ko
 kernel/drivers/hwmon/ibmaem.ko
@@ -510,6 +511,7 @@ kernel/drivers/i2c/busses/i2c-nforce2.ko
 kernel/drivers/i2c/busses/i2c-nforce2-s4985.ko
 kernel/drivers/i2c/busses/i2c-ocores.ko
 kernel/drivers/i2c/busses/i2c-parport-light.ko
+kernel/drivers/i2c/i2c-smbus.ko
 kernel/drivers/i2c/busses/i2c-pca-platform.ko
 kernel/drivers/i2c/busses/i2c-robotfuzz-osif.ko
 kernel/drivers/i2c/busses/i2c-scmi.ko
@@ -524,7 +526,6 @@ kernel/drivers/i2c/busses/i2c-viapro.ko
 kernel/drivers/i2c/busses/i2c-viperboard.ko
 kernel/drivers/i2c/busses/i2c-xiic.ko
 kernel/drivers/i2c/i2c-mux.ko
-kernel/drivers/i2c/i2c-smbus.ko
 kernel/drivers/i2c/i2c-stub.ko
 kernel/drivers/i2c/muxes/i2c-mux-gpio.ko
 kernel/drivers/i2c/muxes/i2c-mux-pca9541.ko
@@ -797,6 +798,7 @@ kernel/drivers/input/misc/retu-pwrbutton.ko
 kernel/drivers/mfd/retu-mfd.ko
 kernel/drivers/input/misc/rotary_encoder.ko
 kernel/drivers/input/misc/soc_button_array.ko
+kernel/drivers/input/misc/tps65218-pwrbutton.ko
 kernel/drivers/input/misc/twl4030-pwrbutton.ko
 kernel/drivers/input/misc/twl4030-vibra.ko
 kernel/drivers/input/misc/twl6040-vibra.ko
@@ -1273,9 +1275,11 @@ kernel/drivers/media/radio/wl128x/fm_drv.ko
 kernel/drivers/media/rc/ati_remote.ko
 kernel/drivers/media/rc/ene_ir.ko
 kernel/drivers/media/rc/fintek-cir.ko
+kernel/drivers/media/rc/gpio-ir-recv.ko
 kernel/drivers/media/rc/igorplugusb.ko
 kernel/drivers/media/rc/iguanair.ko
 kernel/drivers/media/rc/imon.ko
+kernel/drivers/media/rc/ir-hix5hd2.ko
 kernel/drivers/media/rc/ir-jvc-decoder.ko
 kernel/drivers/media/rc/ir-lirc-codec.ko
 kernel/drivers/media/rc/lirc_dev.ko
@@ -1610,6 +1614,7 @@ kernel/drivers/mfd/sm501.ko
 kernel/drivers/mfd/tps6105x.ko
 kernel/drivers/mfd/tps65010.ko
 kernel/drivers/mfd/tps6507x.ko
+kernel/drivers/mfd/tps65218.ko
 kernel/drivers/mfd/viperboard.ko
 kernel/drivers/mfd/vx855.ko
 kernel/drivers/mfd/wl1273-core.ko
@@ -1649,6 +1654,7 @@ kernel/drivers/misc/mic/cosm_client/cosm_client.ko
 kernel/drivers/misc/mic/scif/scif.ko
 kernel/drivers/misc/mic/cosm/mic_cosm.ko
 kernel/drivers/misc/phantom.ko
+kernel/drivers/misc/ti_dac7512.ko
 kernel/drivers/misc/tifm_7xx1.ko
 kernel/drivers/misc/tsl2550.ko
 kernel/drivers/mmc/host/cb710-mmc.ko
@@ -2495,6 +2501,7 @@ kernel/drivers/staging/unisys/visorbus/visorbus.ko
 kernel/drivers/staging/unisys/visorhba/visorhba.ko
 kernel/drivers/staging/unisys/visorinput/visorinput.ko
 kernel/drivers/staging/unisys/visornic/visornic.ko
+kernel/drivers/staging/vme/devices/vme_pio2.ko
 kernel/drivers/staging/vme/devices/vme_user.ko
 kernel/drivers/staging/vt6655/vt6655_stage.ko
 kernel/drivers/staging/vt6656/vt6656_stage.ko
@@ -2759,6 +2766,7 @@ kernel/drivers/video/backlight/pwm_bl.ko
 kernel/drivers/video/backlight/s6e63m0.ko
 kernel/drivers/video/backlight/sky81452-backlight.ko
 kernel/drivers/video/backlight/tdo24m.ko
+kernel/drivers/video/backlight/tps65217_bl.ko
 kernel/drivers/video/backlight/vgg2432a4.ko
 kernel/drivers/video/backlight/wm831x_bl.ko
 kernel/drivers/video/fbdev/arcfb.ko
@@ -3081,6 +3089,7 @@ kernel/sound/firewire/fireworks/snd-fireworks.ko
 kernel/sound/firewire/oxfw/snd-oxfw.ko
 kernel/sound/firewire/snd-isight.ko
 kernel/sound/firewire/tascam/snd-firewire-tascam.ko
+kernel/sound/hda/ext/snd-hda-ext-core.ko
 kernel/sound/hda/snd-hda-core.ko
 kernel/sound/i2c/other/snd-ak4113.ko
 kernel/sound/i2c/other/snd-ak4114.ko
@@ -3197,13 +3206,21 @@ kernel/sound/soc/codecs/snd-soc-cs42l73.ko
 kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko
 kernel/sound/soc/codecs/snd-soc-cs42xx8.ko
 kernel/sound/soc/codecs/snd-soc-cs4349.ko
+kernel/sound/soc/codecs/snd-soc-dmic.ko
 kernel/sound/soc/codecs/snd-soc-gtm601.ko
 kernel/sound/soc/codecs/snd-soc-hdmi-codec.ko
+kernel/sound/soc/codecs/snd-soc-max98090.ko
 kernel/sound/soc/codecs/snd-soc-pcm1681.ko
 kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko
 kernel/sound/soc/codecs/snd-soc-pcm512x.ko
 kernel/sound/soc/codecs/snd-soc-pcm512x-spi.ko
+kernel/sound/soc/codecs/snd-soc-rl6231.ko
+kernel/sound/soc/codecs/snd-soc-rl6347a.ko
+kernel/sound/soc/codecs/snd-soc-rt286.ko
 kernel/sound/soc/codecs/snd-soc-rt5631.ko
+kernel/sound/soc/codecs/snd-soc-rt5640.ko
+kernel/sound/soc/codecs/snd-soc-rt5645.ko
+kernel/sound/soc/codecs/snd-soc-rt5670.ko
 kernel/sound/soc/codecs/snd-soc-sgtl5000.ko
 kernel/sound/soc/codecs/snd-soc-si476x.ko
 kernel/sound/soc/codecs/snd-soc-spdif-rx.ko
@@ -3253,6 +3270,25 @@ kernel/sound/soc/fsl/snd-soc-fsl-ssi.ko
 kernel/sound/soc/fsl/snd-soc-imx-audmux.ko
 kernel/sound/soc/generic/snd-soc-simple-card.ko
 kernel/sound/soc/generic/snd-soc-simple-card-utils.ko
+kernel/sound/soc/intel/atom/sst/snd-intel-sst-acpi.ko
+kernel/sound/soc/intel/atom/sst/snd-intel-sst-core.ko
+kernel/sound/soc/intel/atom/snd-soc-sst-atom-hifi2-platform.ko
+kernel/sound/soc/intel/common/snd-soc-sst-match.ko
+kernel/sound/soc/intel/boards/snd-soc-skl_rt286.ko
+kernel/sound/soc/codecs/snd-soc-hdac-hdmi.ko
+kernel/sound/soc/intel/boards/snd-soc-sst-broadwell.ko
+kernel/sound/soc/intel/haswell/snd-soc-sst-haswell-pcm.ko
+kernel/sound/soc/intel/common/snd-soc-sst-firmware.ko
+kernel/sound/soc/intel/common/snd-soc-sst-ipc.ko
+kernel/sound/soc/intel/common/snd-soc-sst-dsp.ko
+kernel/sound/soc/intel/boards/snd-soc-sst-bytcr-rt5640.ko
+kernel/sound/soc/intel/boards/snd-soc-sst-cht-bsw-max98090_ti.ko
+kernel/sound/soc/intel/boards/snd-soc-sst-cht-bsw-rt5645.ko
+kernel/sound/soc/intel/boards/snd-soc-sst-cht-bsw-rt5672.ko
+kernel/sound/soc/intel/boards/snd-soc-sst-haswell.ko
+kernel/sound/soc/intel/common/snd-soc-sst-acpi.ko
+kernel/sound/soc/intel/skylake/snd-soc-skl-ipc.ko
+kernel/sound/soc/intel/skylake/snd-soc-skl.ko
 kernel/sound/soc/xtensa/snd-soc-xtfpga-i2s.ko
 kernel/sound/usb/6fire/snd-usb-6fire.ko
 kernel/sound/usb/bcd2000/snd-bcd2000.ko
@@ -3366,6 +3402,7 @@ kernel/drivers/power/supply/smb347-charger.ko
 kernel/drivers/power/supply/ds2782_battery.ko
 kernel/drivers/power/supply/da9052-battery.ko
 kernel/drivers/power/supply/da9150-fg.ko
+kernel/drivers/power/supply/tps65217_charger.ko
 kernel/drivers/power/supply/bq27xxx_battery_i2c.ko
 kernel/drivers/power/supply/bq27xxx_battery.ko
 kernel/drivers/power/supply/88pm860x_charger.ko
@@ -3456,12 +3493,8 @@ kernel/drivers/media/i2c/ov2640.ko
 kernel/drivers/media/dvb-frontends/stv6111.ko
 kernel/drivers/media/dvb-frontends/stv0910.ko
 kernel/drivers/media/dvb-frontends/mxl5xx.ko
-kernel/drivers/media/rc/keymaps/rc-astrometa-t2hybrid.ko
 kernel/drivers/media/rc/keymaps/rc-zx-irdec.ko
 kernel/drivers/media/rc/keymaps/rc-d680-dmb.ko
-kernel/drivers/media/rc/keymaps/rc-hisi-tv-demo.ko
-kernel/drivers/media/rc/keymaps/rc-hisi-poplar.ko
-kernel/drivers/media/rc/keymaps/rc-tango.ko
 kernel/drivers/media/rc/keymaps/rc-dvico-portable.ko
 kernel/drivers/media/rc/keymaps/rc-dvico-mce.ko
 kernel/drivers/media/rc/keymaps/rc-geekbox.ko
@@ -3472,4 +3505,3 @@ kernel/drivers/phy/marvell/phy-pxa-28nm-usb2.ko
 kernel/drivers/phy/marvell/phy-pxa-28nm-hsic.ko
 kernel/drivers/usb/gadget/udc/amd5536udc_pci.ko
 kernel/drivers/usb/gadget/udc/snps_udc_core.ko
-kernel/net/vmw_vsock/vsock_diag.ko
