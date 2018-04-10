@@ -384,6 +384,7 @@ kernel/drivers/scsi/scsi_transport_iscsi.ko
 kernel/drivers/scsi/scsi_transport_sas.ko
 kernel/drivers/scsi/scsi_transport_spi.ko
 kernel/drivers/scsi/scsi_transport_srp.ko
+kernel/drivers/scsi/smartpqi/smartpqi.ko
 kernel/drivers/scsi/sym53c8xx_2/sym53c8xx.ko
 kernel/drivers/scsi/virtio_scsi.ko
 kernel/drivers/scsi/vmw_pvscsi.ko
