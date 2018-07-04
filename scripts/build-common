@@ -21,6 +21,7 @@ list_build_files() {
     find $(find ./arch/${SRCARCH} -name include -o -name scripts -type d) ./include ./scripts -type f
     find ./arch/${SRCARCH} -name module.lds -o -name Kbuild.platforms -o -name Platform
     find . -name Module.symvers -type f
+    find . -name objtool -type f
 }
 
 create_firmware_tar() {
