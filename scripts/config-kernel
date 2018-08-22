@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+cd $(dirname $0)/..
+if ! ./scripts/download; then
+    echo "blah"
+    exit 1
+fi
+
+./scripts/extract
+run-parts -v ./scripts/hooks
+
+source scripts/build-common
+source scripts/version
+
+DIR=${VERSION}
+
+if [ -e "/source/dist/kernel/linux-${KERNEL_VERSION}-x86.tar.gz" ]; then
+    echo "skipping kernel build - found linux-${KERNEL_VERSION}-rancher-x86.tar.gz in ./dist/kernel/"
+else
+    cd ${BUILD}/${DIR}
+    make oldconfig
+    cp .config ${DIST}/kernel/config
+fi

@@ -13,6 +13,9 @@ $(TARGETS): .dapper
 shell-bind: .dapper
 	./.dapper -m bind -s
 
+kernel-config: .dapper
+	./.dapper config-kernel
+
 clean:
 	@./scripts/clean
 
