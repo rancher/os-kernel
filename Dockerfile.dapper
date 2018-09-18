@@ -2,7 +2,7 @@ FROM gcc:7.3.0
 # FROM arm64=arm64v8/gcc:7.3.0
 
 RUN apt-get update \
-    && apt-get install -y ccache vim gnupg2 locales bc kmod libelf-dev
+    && apt-get install -y ccache vim gnupg2 locales bc kmod libelf-dev bison flex
 
 # Install dapper
 RUN curl -sL https://releases.rancher.com/dapper/latest/dapper-$(uname -s)-$(uname -m | sed 's/arm.*/arm/') > /usr/bin/dapper \
