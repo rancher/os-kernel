@@ -1,8 +1,8 @@
 diff --git a/init/main.c b/init/main.c
-index 2858be7..83fa41b 100644
+index 3b4ada11ed52..33069b8b114d 100644
 --- a/init/main.c
 +++ b/init/main.c
-@@ -519,9 +519,12 @@ asmlinkage __visible void __init start_kernel(void)
+@@ -573,9 +573,12 @@ asmlinkage __visible void __init start_kernel(void)
  				  static_command_line, __start___param,
  				  __stop___param - __start___param,
  				  -1, -1, NULL, &unknown_bootoption);
