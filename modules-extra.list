@@ -3348,9 +3348,7 @@ kernel/drivers/net/wireless/cisco/airo.ko
 kernel/drivers/net/wireless/intel/ipw2x00/ipw2100.ko
 kernel/drivers/net/wireless/intel/ipw2x00/libipw.ko
 kernel/drivers/net/wireless/intel/ipw2x00/ipw2200.ko
-kernel/drivers/net/wireless/intel/iwlwifi/iwlwifi.ko
 kernel/drivers/net/wireless/intel/iwlwifi/dvm/iwldvm.ko
-kernel/drivers/net/wireless/intel/iwlwifi/mvm/iwlmvm.ko
 kernel/drivers/net/wireless/intel/iwlegacy/iwl3945.ko
 kernel/drivers/net/wireless/intel/iwlegacy/iwlegacy.ko
 kernel/drivers/net/wireless/intel/iwlegacy/iwl4965.ko
