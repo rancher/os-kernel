@@ -3,8 +3,8 @@
 cd $(dirname $0)/..
 
 if ! ./scripts/ci; then
-	echo "build failure see release.log"
-	exit 1
+    echo "build failure see release.log"
+    exit 1
 fi
 
 echo

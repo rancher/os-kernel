@@ -28,8 +28,8 @@ pushd .
 cd ${DIR}
 echo "are there patches in ${PATCHES}"
 for p in ${PATCHES}/*.patch; do
-	echo "patching $p"
-	patch -p1 -i $p
+    echo "patching $p"
+    patch -p1 -i $p
 done
 popd
 
