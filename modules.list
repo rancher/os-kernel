@@ -890,3 +890,5 @@ kernel/drivers/net/ethernet/amazon/ena/ena.ko
 kernel/drivers/mmc/host/sdhci-acpi.ko
 kernel/drivers/mmc/host/sdhci.ko
 kernel/drivers/mmc/core/mmc_block.ko
+kernel/drivers/net/wireless/intel/iwlwifi/iwlwifi.ko
+kernel/drivers/net/wireless/intel/iwlwifi/mvm/iwlmvm.ko
