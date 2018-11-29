@@ -123,7 +123,6 @@ kernel/drivers/char/tpm/st33zp24/tpm_st33zp24_i2c.ko
 kernel/drivers/char/tpm/st33zp24/tpm_st33zp24.ko
 kernel/drivers/char/tpm/st33zp24/tpm_st33zp24_spi.ko
 kernel/drivers/char/tpm/tpm_atmel.ko
-kernel/drivers/char/tpm/tpm_crb.ko
 kernel/drivers/char/tpm/tpm_i2c_atmel.ko
 kernel/drivers/char/tpm/tpm_i2c_infineon.ko
 kernel/drivers/char/tpm/tpm_i2c_nuvoton.ko
@@ -1926,8 +1925,6 @@ kernel/drivers/net/wan/sbni.ko
 kernel/drivers/net/wan/wanxl.ko
 kernel/drivers/net/wan/x25_asy.ko
 kernel/drivers/net/wireless/ath/ar5523/ar5523.ko
-kernel/net/mac80211/mac80211.ko
-kernel/net/wireless/cfg80211.ko
 kernel/drivers/net/wireless/ath/ath10k/ath10k_core.ko
 kernel/drivers/net/wireless/ath/ath.ko
 kernel/drivers/net/wireless/ath/ath10k/ath10k_pci.ko
