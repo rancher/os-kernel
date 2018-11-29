@@ -67,6 +67,7 @@ create_firmware_tar() {
 move_files() {
     local module_list=$1
     local target=$2
+    local target_file=${DIST}/kernel/modules-${target}.list
 
     for i in $(<$module_list); do
         if [ ! -e $i ]; then
@@ -79,10 +80,12 @@ move_files() {
                 dest=$(readlink -f $j | sed 's!/build/!/'$target'/!')
                 mkdir -p $(dirname $dest)
                 mv -f $j $dest
-                echo $j >> ${DIST}/kernel/modules-${target}.list
+                echo $j >> ${target_file}
             fi
         done
     done
+
+    sort ${target_file} -o ${target_file}
 }
 
 declare -A DEPS
