@@ -3,6 +3,8 @@ set -e
 
 cd $(dirname $0)/..
 
+source ./scripts/version
+
 ./scripts/test-firmware
 
 if ! ./scripts/download; then

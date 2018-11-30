@@ -3,7 +3,7 @@ set -e
 
 cd $(dirname $0)/..
 
-FIRMWARE=$(readlink -f scripts/firmware)
+FIRMWARE=$(readlink -f firmware/${KERNEL_ARCH}/firmware)
 echo "FIRMWARE test: $FIRMWARE"
 
 if [ ! -e linux-firmware ]; then

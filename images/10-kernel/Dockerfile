@@ -1,5 +1,5 @@
-#FROM alpine:3.4
-## FROM arm64=skip arm=skip
+FROM alpine:3.8
+# FROM arm64=arm64v8/alpine:3.8 arm=skip
 #RUN apk --purge --no-cache add kmod bash
 
 
