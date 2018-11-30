@@ -22,16 +22,16 @@ if [ ! -e ${DIR} ]; then
     mv ${TEMP}/${DIR} ${DIR}
 fi
 
-cp ${CONFIG}/kernel-config ${DIR}/.config
+cp ${CONFIG}/${KERNEL_ARCH}/kernel-config ${DIR}/.config
 
 pushd .
 cd ${DIR}
-echo "are there patches in ${PATCHES}"
-for p in ${PATCHES}/*.patch; do
+echo "are there patches in ${PATCHES}/${KERNEL_ARCH}"
+for p in ${PATCHES}/${KERNEL_ARCH}/*.patch; do
     echo "patching $p"
     patch -p1 -i $p
 done
 popd
 
 
-tar zcvf ${DIST}/kernel/linux-${KERNEL_VERSION}-src.tgz ${DIR}
+tar zcvf ${DIST}/kernel/linux-${KERNEL_VERSION}-${KERNEL_ARCH}-src.tgz ${DIR}

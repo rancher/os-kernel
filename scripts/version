@@ -12,3 +12,17 @@ if [[ -z "$DIRTY" && -n "$GIT_TAG" ]]; then
 else
     VERSION="${COMMIT}${DIRTY}"
 fi
+
+SUFFIX=""
+if [ -n "${ARCH}" ] && [ "${ARCH}" != "amd64" ]; then
+    SUFFIX="_${ARCH}"
+fi
+
+case $ARCH in
+    amd64)
+        KERNEL_ARCH=x86
+        ;;
+    *)
+        KERNEL_ARCH=${ARCH}
+        ;;
+esac
