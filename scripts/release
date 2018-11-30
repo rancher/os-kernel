@@ -12,9 +12,9 @@ fi
 echo
 echo "--- ${KERNEL_VERSION} Kernel prepared for RancherOS"
 echo "  ./dist/kernel/linux-${KERNEL_VERSION}-${KERNEL_ARCH}-src.tgz"
-echo "	./dist/kernel/extra-linux-${KERNEL_VERSION}-${KERNEL_ARCH}.tar.gz"
-echo "	./dist/kernel/build-linux-${KERNEL_VERSION}-${KERNEL_ARCH}.tar.gz"
-echo "	./dist/kernel/linux-${KERNEL_VERSION}-${KERNEL_ARCH}.tar.gz"
+echo "  ./dist/kernel/extra-linux-${KERNEL_VERSION}-${KERNEL_ARCH}.tar.gz"
+echo "  ./dist/kernel/build-linux-${KERNEL_VERSION}-${KERNEL_ARCH}.tar.gz"
+echo "  ./dist/kernel/linux-${KERNEL_VERSION}-${KERNEL_ARCH}.tar.gz"
 echo "  ./release-${KERNEL_ARCH}.log"
 echo
 echo "Images ready to push:"
