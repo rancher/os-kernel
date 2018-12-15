@@ -3,4 +3,6 @@
 cd $(dirname $0)/..
 
 rm -rf build dist
-docker rmi $(docker images os-kernel --format "{{.Repository}}:{{.Tag}}") | true
+docker rmi $(docker images --format "{{.Repository}}:{{.Tag}}" | grep -E "rancher|os") || true
+docker rmi $(docker images --filter dangling=true -q) || true
+git clean -dxf
