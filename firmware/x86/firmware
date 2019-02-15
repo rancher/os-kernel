@@ -51,9 +51,9 @@ tigon/tg3.bin
 acenic/tg1.bin
 acenic/tg2.bin
 myri10ge_ethp_z8e.dat
-bnx2x/bnx2x-e1-7.13.1.0.fw
-bnx2x/bnx2x-e2-7.13.1.0.fw
-bnx2x/bnx2x-e1h-7.13.1.0.fw
+bnx2x/bnx2x-e1-7.13.11.0.fw
+bnx2x/bnx2x-e2-7.13.11.0.fw
+bnx2x/bnx2x-e1h-7.13.11.0.fw
 iwlwifi-3160-17.ucode
 iwlwifi-3168-29.ucode
 iwlwifi-7260-17.ucode
