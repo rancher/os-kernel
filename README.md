@@ -5,7 +5,7 @@
 
 To build the tgz's and the kernel header & extras images, run:
 
-`KERNEL_TAG=4.9.10 make release`
+`KERNEL_TAG=4.14.98 make release`
 
 and if you're uploading them, set your GITHUB_TOKEN and login to docker hub, then run
 
