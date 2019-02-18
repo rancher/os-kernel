@@ -5,7 +5,13 @@
 
 To build the tgz's and the kernel header & extras images, run:
 
-`KERNEL_TAG=4.14.98 make release`
+```
+git checkout tags/v4.14.98-rancher -b v4.14.98-rancher
+
+KERNEL_TAG=4.14.98 make release
+```
+
+You should build it on an arm64 host if you want to get an arm64 kernel.
 
 and if you're uploading them, set your GITHUB_TOKEN and login to docker hub, then run
 
