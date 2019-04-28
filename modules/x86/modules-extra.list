@@ -2665,7 +2665,6 @@ kernel/drivers/tty/moxa.ko
 kernel/drivers/tty/mxser.ko
 kernel/drivers/tty/n_gsm.ko
 kernel/drivers/tty/n_hdlc.ko
-kernel/drivers/tty/n_r3964.ko
 kernel/drivers/tty/n_tracerouter.ko
 kernel/drivers/tty/n_tracesink.ko
 kernel/drivers/tty/nozomi.ko
