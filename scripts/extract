@@ -27,7 +27,7 @@ cp ${CONFIG}/${KERNEL_ARCH}/kernel-config ${DIR}/.config
 pushd .
 cd ${DIR}
 echo "are there patches in ${PATCHES}/${KERNEL_ARCH}"
-for p in ${PATCHES}/${KERNEL_ARCH}/*.patch; do
+for p in `find ${PATCHES}/${KERNEL_ARCH} -name "*.patch"`; do
     echo "patching $p"
     patch -p1 -i $p
 done

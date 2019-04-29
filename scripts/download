@@ -12,18 +12,18 @@ cd ${ARTIFACTS}
 if [ ! -e "${KERNEL_TAR}" ]; then
     curl -sL ${KERNEL_URL}${KERNEL_TAR} > ${KERNEL_TAR}
 fi
-curl -sL ${KERNEL_URL}${KERNEL_SIGN} > ${KERNEL_SIGN}
+#curl -sL ${KERNEL_URL}${KERNEL_SIGN} > ${KERNEL_SIGN}
 
 # grab gregkh's stable signing key
-GPG_KEY="6092693E"
-set +e
-gpg2 --keyserver hkp://keys.gnupg.net --recv-keys $GPG_KEY
-[ $? -ne 0 ] && echo "gpg2 key sign download failed. trying second mirror"
-set -e
-gpg2 --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys $GPG_KEY
+#GPG_KEY="6092693E"
+#set +e
+#gpg2 --keyserver hkp://keys.gnupg.net --recv-keys $GPG_KEY
+#[ $? -ne 0 ] && echo "gpg2 key sign download failed. trying second mirror"
+#set -e
+#gpg2 --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys $GPG_KEY
 
-if ! xz -cd ${KERNEL_TAR} | gpg2 --verify ${KERNEL_SIGN} - ; then
-    echo "ERROR: ${KERNEL_TAR} signing error" 1>&2
-    exit 1
-fi
+#if ! xz -cd ${KERNEL_TAR} | gpg2 --verify ${KERNEL_SIGN} - ; then
+#    echo "ERROR: ${KERNEL_TAR} signing error" 1>&2
+#    exit 1
+#fi
 echo "${KERNEL_TAR} probably ok"
