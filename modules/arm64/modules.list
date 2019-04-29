@@ -131,6 +131,7 @@ kernel/net/netfilter/ipvs/ip_vs_sh.ko
 kernel/net/netfilter/ipvs/ip_vs_wlc.ko
 kernel/net/netfilter/ipvs/ip_vs_wrr.ko
 kernel/net/netfilter/xt_ipvs.ko
+kernel/net/nsh/nsh.ko
 kernel/net/openvswitch/openvswitch.ko
 kernel/net/openvswitch/vport-geneve.ko
 kernel/net/openvswitch/vport-gre.ko
