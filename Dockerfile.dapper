@@ -39,6 +39,8 @@ ARG OS_REPO=rancher
 ARG KERNEL_TAG
 ARG KERNEL_VERSION=${KERNEL_TAG}-${OS_REPO}
 
+ARG FIRMWARE_TAG=20190514
+
 ENV OS_REPO=${OS_REPO} \
     DOCKER_URL=DOCKER_URL_${ARCH} \
     DOCKER_URL_amd64=https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 \
@@ -48,6 +50,7 @@ ENV OS_REPO=${OS_REPO} \
     KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/ \
     KERNEL_TAR=linux-${KERNEL_TAG}.tar.xz \
     KERNEL_SIGN=linux-${KERNEL_TAG}.tar.sign \
+    FIRMWARE_TAG=${FIRMWARE_TAG} \
     KERNEL_ARCH=x86
 # for rc testing
 #ENV KERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/linux-${KERNEL_TAG}.tar.xz

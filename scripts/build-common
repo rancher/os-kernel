@@ -33,6 +33,9 @@ create_firmware_tar() {
 
     if [ ! -e linux-firmware ]; then
         git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+        pushd linux-firmware
+        git checkout -b ${FIRMWARE_TAG} ${FIRMWARE_TAG}
+        popd
     fi
 
     (
