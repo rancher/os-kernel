@@ -1096,6 +1096,7 @@ kernel/drivers/media/firewire/firedtv.ko
 kernel/drivers/media/i2c/adv7170.ko
 kernel/drivers/media/i2c/adv7175.ko
 kernel/drivers/media/i2c/adv7511.ko
+kernel/drivers/media/i2c/adv7511-v4l2.ko
 kernel/drivers/media/i2c/adv7604.ko
 kernel/drivers/media/i2c/adv7842.ko
 kernel/drivers/media/i2c/bt819.ko
