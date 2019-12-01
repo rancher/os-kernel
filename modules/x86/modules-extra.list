@@ -1095,7 +1095,6 @@ kernel/drivers/media/dvb-frontends/zl10353.ko
 kernel/drivers/media/firewire/firedtv.ko
 kernel/drivers/media/i2c/adv7170.ko
 kernel/drivers/media/i2c/adv7175.ko
-kernel/drivers/media/i2c/adv7511.ko
 kernel/drivers/media/i2c/adv7511-v4l2.ko
 kernel/drivers/media/i2c/adv7604.ko
 kernel/drivers/media/i2c/adv7842.ko
@@ -2794,7 +2793,6 @@ kernel/drivers/usb/misc/isight_firmware.ko
 kernel/drivers/usb/misc/ldusb.ko
 kernel/drivers/usb/misc/legousbtower.ko
 kernel/drivers/usb/misc/lvstest.ko
-kernel/drivers/usb/misc/rio500.ko
 kernel/drivers/usb/misc/sisusbvga/sisusbvga.ko
 kernel/drivers/usb/misc/trancevibrator.ko
 kernel/drivers/usb/misc/usb3503.ko
