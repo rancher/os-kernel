@@ -1661,7 +1661,6 @@ kernel/drivers/mmc/host/cb710-mmc.ko
 kernel/drivers/mmc/host/cqhci.ko
 kernel/drivers/mmc/host/mmc_spi.ko
 kernel/drivers/mmc/host/mtk-sd.ko
-kernel/drivers/mmc/host/sdhci-pci.ko
 kernel/drivers/mmc/host/sdhci-pltfm.ko
 kernel/drivers/mmc/host/tifm_sd.ko
 kernel/drivers/mmc/host/toshsd.ko

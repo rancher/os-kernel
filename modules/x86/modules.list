@@ -230,6 +230,7 @@ kernel/drivers/misc/vmw_balloon.ko
 kernel/drivers/misc/vmw_vmci/vmw_vmci.ko
 kernel/drivers/mmc/core/mmc_block.ko
 kernel/drivers/mmc/host/sdhci-acpi.ko
+kernel/drivers/mmc/host/sdhci-pci.ko
 kernel/drivers/mmc/host/sdhci.ko
 kernel/drivers/net/bonding/bonding.ko
 kernel/drivers/net/dummy.ko
